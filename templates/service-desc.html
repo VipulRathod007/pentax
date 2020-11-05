@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<!--================Hero Banner Area Start =================-->
+<section class="hero-banner">
+    <div class="container">
+        <h2>Service Description</h2>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{data.serviceTitle}}</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<!--================Hero Banner Area End =================-->
+<section class="portfolio_area area-padding" id="portfolio">
+    <div class="container">
+        <div class="area-heading">
+            <h3>Check <span>Our Recent</span> Work</h3>
+            <p>She'd earth that midst void creeping him above seas.</p>
+        </div>
+
+        <div class="filters-content">
+            <div class="row portfolio-grid">
+                <div class="grid-sizer col-md-3 col-lg-4"></div>
+                {% for pic in pics %}
+                <div class="col-lg-4 col-md-6 all">
+                    <div class="single_portfolio">
+                        {% set fname = url_for('static', filename='UploadedImages/') %}
+                        <img class="img-fluid w-100" src="{{fname+pic.picName}}" alt="">
+                        <div class="short_info">
+                            <p>{{pic.picCaption}}</p>
+                            <h4><a href="#">{{pic.picLocation}}</a></h4>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--================ PriceTable section Start =================-->
+<section class="pricing-table-area bg-1 area-padding">
+    <div class="container">
+        <div class="area-heading">
+            <h3>perfect <span> price</span> plan</h3>
+            <p>She'd earth that midst void creeping him above seas</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <div class="text-center card-priceTable">
+                    <div class="priceTable-header">
+                        <h3>{{data.serviceTitle}}</h3>
+                        <p>Details Below</p>
+                        <h1 class="priceTable-price"><span>{{data.fees }}</span> Rs.</h1>
+                    </div>
+                    <ul class="priceTable-list">
+                        <li>
+                            <span class="position"><i class="ti-check"></i></span>{{ data.serviceDetails1 }}
+                        </li>
+                        <li>
+                            <span class="position"><i class="ti-check"></i></span>{{ data.serviceDetails2 }}
+                        </li>
+                        <li>
+                            <span class="position"><i class="ti-check"></i></span>{{ data.serviceDetails3 }}
+                        </li>
+                        <li>
+                            <span class="negative"><i class="ti-check"></i></span>{{ data.serviceDetails4 }}
+                        </li>
+                        <li>
+                            <span class="negative"><i class="ti-check"></i></span>{{ data.serviceDetails5 }}
+                        </li>
+                    </ul>
+                    <div class="priceTable-footer">
+                        <a class="main_btn" href="/bookService/{{data.slug}}">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================ PriceTable section End =================-->
+
+
+{% endblock %}

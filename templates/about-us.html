@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<!--================Hero Banner Area Start =================-->
+<section class="hero-banner">
+    <div class="container">
+        <h2>About Us</h2>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">About us</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<!--================Hero Banner Area End =================-->
+
+
+
+
+
+<!--================About  Area =================-->
+<section class="about-area area-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="img-styleBox">
+                    <div class="styleBox-border">
+                        <img class="styleBox-img1" src="{{ url_for('static', filename = 'img/background/about1.jpg') }}"
+                            alt="">
+                    </div>
+                    <img class="styleBox-img2" src="{{ url_for('static', filename = 'img/background/about2.jpg') }}"
+                        alt="">
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-12 offset-md-0 offset-lg-1">
+                <div class="about-content">
+                    <h4>Let’s <br>
+                        Introduce About<br>
+                        Myself
+                    </h4>
+                    <p>Beginning blessed second a creepeth. Darkness wherein fish years good air whose after seed appear
+                        midst evenin</p>
+                    <p>Beginning blessed second a creepeth. Darkness wherein fish years good air whose after seed appear
+                        midst evenin appear void give third bearing divide one so</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================About Area End =================-->
+
+{% endblock %}

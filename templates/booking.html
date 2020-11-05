@@ -1,0 +1,101 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!--================Hero Banner Area Start =================-->
+<section class="hero-banner">
+    <div class="container">
+        <h2>Book Service</h2>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Book Service</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<!--================Hero Banner Area End =================-->
+
+{% if done %}
+<div class="container">
+    <div class="alert alert-success mt-4" role="alert">
+        <h4 class="alert-heading">Booked successfully!</h4>
+        <p>Thank You For Your Interest in Us. Further Communication and Updates will be mailed to you. <br>Your Booking confirmation mail is sent to You!</p>
+        <hr>
+        <p class="mb-0">For any kind of queries, Do contact Us <a href="/contact"> here</a>.</p>
+    </div>
+</div>
+
+{% else %}
+
+
+<section class="service-area area-padding">
+    <div class="container">
+        <div class="area-heading">
+            <h3>Help Us <span>Connecting </span>You!</h3>
+            <p>She'd earth that midst void creeping him above seas.</p>
+        </div>
+        {% if fill %}
+        <form action="/bookService/olduser" method="POST">
+            <input type="text" hidden class="form-control" name="slug" id="slug" value="{{data.slug}}">
+            <input type="text" hidden class="form-control" name="clientLogID" id="clientLogID" value="{{client.clientLogID}}">
+            <div class="form-group">
+                <label for="inputAddress">Booking Date</label>
+                <input type="date" class="form-control" id="inputAddress" name="date">
+                {% if isBusy %}
+                <small class="pl-2" style="color: red; font-weight: 400;">Sorry, Your requested date is already
+                    taken!</small>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-dark">Proceed</button>
+        </form>
+        {% else %}
+        <form action="/bookService/new" method="POST">
+            <input type="text" hidden class="form-control" name="slug" id="slug" value="{{data.slug}}">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Name</label>
+                    <input type="text" class="form-control" name="name" id="inputPassword4"
+                        placeholder="Enter Your Name Here">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" name="email" id="inputEmail4" placeholder="abc@domain.com">
+                    <small class="pl-2">You'll get further notifications in mail.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Booking Date</label>
+                <input type="date" class="form-control" id="inputAddress" name="date">
+                {% if isBusy %}
+                <small class="pl-2" style="color: red; font-weight: 400;">Sorry, Your requested date is already
+                    taken!</small>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" id="inputAddress" name="address" placeholder="Address Please..">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control" name="city" id="inputCity" placeholder="Enter Here..">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputState">State</label>
+                    <input type="text" class="form-control" name="state" id="inputState" placeholder="Enter Here..">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputZip">Zip</label>
+                    <input type="number" class="form-control" name="zip" id="inputZip" placeholder="Enter Here..">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress2">Contact No</label>
+                <input type="tel" class="form-control" id="inputAddress2" name="contact" placeholder="+1 234 56789">
+            </div>
+            <button type="submit" class="btn btn-dark">Proceed</button>
+        </form>
+        {% endif %}
+    </div>
+</section>
+{% endif %}
+{% endblock %}

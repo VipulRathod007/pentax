@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div>
+    <section class="portfolio_area area-padding" id="portfolio">
+        <div class="container">
+            <div class="area-heading">
+                <h3>Check <span>Our Your</span> Pictures</h3>
+                <p>She'd earth that midst void creeping him above seas.</p>
+            </div>
+
+            <div class="filters-content">
+                <div class="row portfolio-grid">
+                    <div class="grid-sizer col-md-3 col-lg-4"></div>
+                    {% for pic in pics %}
+                    <div class="col-lg-4 col-md-6 all">
+                        <div class="single_portfolio">
+                            {% set fname = url_for('static', filename='UploadedImages/') %}
+                            <img class="img-fluid w-100" src="{{fname+pic.picName}}" alt="">
+                            <div class="short_info">
+                                <p>{{pic.picCaption}}</p>
+                                <h4><a href="#">{{pic.picLocation}}</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    {% if hide %}
+    {% else %}
+        {% if done %}
+        <div class="container">
+            <div class="alert alert-success mt-4" role="alert">
+                <h4 class="alert-heading">Thank You For rating Us!</h4>
+                <p>Thanks for your time.<br>We have some new services, you would like to have. <a href="/service">Learn More</a></p>
+                <hr>
+                <p class="mb-0">For any kind of queries, Do contact Us <a href="/contact"> here</a>.</p>
+            </div>
+        </div>
+        {% else %}
+        <div class="container">
+            <h2>Tell Us Improve..!</h2>
+            <form class="my-4" action="/rateus" method="POST">
+                <div class="form-group">
+                    <label for="formControlRange">Rate Our Performance</label>
+                    <input type="range" class="form-control-range" name="rating" id="formControlRange">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">How was your experience?</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="review" rows="3"></textarea>
+                </div>
+                <hr>
+                <button type="submit" class="btn btn-dark">Submit</button>
+            </form>
+        </div>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

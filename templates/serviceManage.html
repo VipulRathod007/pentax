@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <title>Admin | {{ params['webData']['title'] }}</title>
+</head>
+
+<body>
+    <div class="container">
+        {% if edit %}
+        <h1>Edit Service Details Here!</h1>
+        <hr>
+        <form action="/addService/save/{{data.serviceID}}" method="POST">
+            <div class="form-group">
+                <label for="formGroupExampleInput">Title</label>
+                <input type="text" class="form-control" name="title" id="formGroupExampleInput"
+                    placeholder="Service Title Here" value="{{data.serviceTitle}}">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Description</label>
+                <input type="text" class="form-control" name="desc" id="formGroupExampleInput2"
+                    placeholder="Description Please.." value="{{data.serviceDesc}}">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput3">Slug</label>
+                <input type="text" class="form-control" name="slug" id="formGroupExampleInput3"
+                    placeholder="Enter Service Slug Here" value="{{data.slug}}">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput4">Service Icon (Class Name)</label>
+                <input type="text" class="form-control" name="icon" id="formGroupExampleInput4"
+                    placeholder="Enter Service Icon" value="{{data.serviceIcon}}">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput5">Price</label>
+                <input type="text" class="form-control" name="price" id="formGroupExampleInput5"
+                    placeholder="Enter Your Price" value="{{data.fees}}">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput6">Details Line 1</label>
+                <input type="text" class="form-control" name="detail1" id="formGroupExampleInput6"
+                    placeholder="Enter Details Here" value="{{data.serviceDetails1}}">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput7">Details Line 2</label>
+                <input type="text" class="form-control" name="detail2" id="formGroupExampleInput7"
+                    placeholder="Enter Details Here" value="{{data.serviceDetails2}}">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput8">Details Line 3</label>
+                <input type="text" class="form-control" name="detail3" id="formGroupExampleInput8"
+                    placeholder="Enter Details Here" value="{{data.serviceDetails3}}">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput9">Details Line 4</label>
+                <input type="text" class="form-control" name="detail4" id="formGroupExampleInput9"
+                    placeholder="Enter Details Here" value="{{data.serviceDetails4}}">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput10">Details Line 5</label>
+                <input type="text" class="form-control" name="detail5" id="formGroupExampleInput10"
+                    placeholder="Enter Details Here" value="{{data.serviceDetails5}}">
+            </div>
+            <button type="submit" class="btn btn-dark">Save</button>
+        </form>
+        {% else %}
+        <h1>Add New Service!</h1>
+        <hr>
+        <form action="/addService/save/0" method="POST">
+            <div class="form-group">
+                <label for="formGroupExampleInput">Title</label>
+                <input type="text" class="form-control" name="title" id="formGroupExampleInput"
+                    placeholder="Service Title Here">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Description</label>
+                <input type="text" class="form-control" name="desc" id="formGroupExampleInput2"
+                    placeholder="Description Please..">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Slug</label>
+                <input type="text" class="form-control" name="slug" id="formGroupExampleInput3"
+                    placeholder="Enter Service Slug Here">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Service Icon (Class Name)</label>
+                <input type="text" class="form-control" name="icon" id="formGroupExampleInput4"
+                    placeholder="Enter Service Icon">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Price</label>
+                <input type="text" class="form-control" name="price" id="formGroupExampleInput5"
+                    placeholder="Enter Your Price">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput6">Details Line 1</label>
+                <input type="text" class="form-control" name="detail1" id="formGroupExampleInput6"
+                    placeholder="Enter Details Here">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput7">Details Line 2</label>
+                <input type="text" class="form-control" name="detail2" id="formGroupExampleInput7"
+                    placeholder="Enter Details Here">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput8">Details Line 3</label>
+                <input type="text" class="form-control" name="detail3" id="formGroupExampleInput8"
+                    placeholder="Enter Details Here">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput9">Details Line 4</label>
+                <input type="text" class="form-control" name="detail4" id="formGroupExampleInput9"
+                    placeholder="Enter Details Here">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput10">Details Line 5</label>
+                <input type="text" class="form-control" name="detail5" id="formGroupExampleInput10"
+                    placeholder="Enter Details Here">
+            </div>
+            <button type="submit" class="btn btn-dark">Save</button>
+        </form>
+        {% endif %}
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>

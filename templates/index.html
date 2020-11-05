@@ -1,0 +1,227 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<!--================Home Banner Area =================-->
+<section class="home_banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background="">
+        </div>
+        <div class="container">
+            <div class="banner_content">
+                <h1>i am <br>
+                    <span class="basecolor">Professional</span> <br>
+                    Photographer</h1>
+                <p>It seasons. Bearing in one years forth saying</p>
+
+                <a class="main_btn" href="#portfolio">view portfolio</a>
+            </div>
+        </div>
+    </div>
+    <div class="social_area">
+        <h4>
+            <a href="{{ params['social']['ig'] }}"><i class="ti-instagram"></i>Instagram</a>
+        </h4>
+        <div class="round"></div>
+        <h4>
+            <a class="twitter" href="{{ params['social']['tw'] }}"><i class="ti-twitter"></i>Twitter</a>
+        </h4>
+        <div class="round"></div>
+        <h4>
+            <a href="{{ params['social']['fb'] }}"><i class="ti-facebook"></i>Facebook</a>
+        </h4>
+        <div></div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+
+
+
+
+<!--================ Start Portfolio Area =================-->
+<section class="portfolio_area area-padding" id="portfolio">
+    <div class="container">
+        <div class="area-heading">
+            <h3>Check <span>Our Recent</span> Work</h3>
+            <p>She'd earth that midst void creeping him above seas.</p>
+        </div>
+
+        <div class="filters portfolio-filter">
+            <ul>
+                <li class="active" data-filter="*">all</li>
+                {% for genre in genres %}
+                <li data-filter=".{{genre}}">{{genre}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="filters-content">
+            <div class="row portfolio-grid">
+                <div class="grid-sizer col-md-3 col-lg-4"></div>
+                {% for pic in pics %}
+                <div class="col-lg-4 col-md-6 all {{pic.picGenre}}">
+                    {% set fname = url_for('static', filename='UploadedImages/') %}
+                    <div class="single_portfolio">
+                        <img class="img-fluid w-100" src="{{fname+pic.picName}}" alt="">
+                        <div class="short_info">
+                            <p>{{pic.picCaption}}</p>
+                            <h3>{{pic.picLocation}}</h3>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<!--================ End Portfolio Area =================-->
+
+
+<!--================Service  Area =================-->
+<section class="service-area area-padding pad-top-0">
+    <div class="container">
+        <div class="area-heading">
+            <h3>what <span> we</span> offer</h3>
+            <p>She'd earth that midst void creeping him above seas.</p>
+        </div>
+        <div class="row">
+            {% for data in servicesObj %}
+            <!-- Single service -->
+            <div class="col-md-6 col-xl-4">
+                <a href="/service-desc/{{data.slug}}">
+                    <div class="single-service">
+                        <div class="service-icon">
+                            <span class="{{data.serviceIcon}}"></span>
+                        </div>
+                        <div class="service-content grey" style="color: #797979;">
+                            <h5>{{data.serviceTitle}}</h5>
+                            <p>{{data.serviceDesc}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!--================Service Area end =================-->
+
+
+<!--================ PriceTable section Start =================-->
+<section class="pricing-table-area bg-1 area-padding" id="booking">
+    <div class="container">
+        <div class="area-heading">
+            <h3>perfect <span> price</span> plan</h3>
+            <p>She'd earth that midst void creeping him above seas</p>
+        </div>
+
+        <div class="row">
+            {% for data in servicesObj %}
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <div class="text-center card-priceTable">
+                    <div class="priceTable-header">
+                        <h3>{{data.serviceTitle}}</h3>
+                        <p>Details Below!</p>
+                        <h1 class="priceTable-price"><span>{{data.fees}}</span> Rs.</h1>
+                    </div>
+                    <ul class="priceTable-list">
+                        <li>
+                            <span class="position"><i class="ti-check"></i></span>{{data.serviceDetails1}}
+                        </li>
+                        <li>
+                            <span class="position"><i class="ti-check"></i></span>{{data.serviceDetails2}}
+                        </li>
+                        <li>
+                            <span class="position"><i class="ti-check"></i></span>{{data.serviceDetails3}}
+                        </li>
+                        <li>
+                            <span class="negative"><i class="ti-check"></i></span>{{data.serviceDetails4}}
+                        </li>
+                        <li>
+                            <span class="negative"><i class="ti-check"></i></span>{{data.serviceDetails5}}
+                        </li>
+                    </ul>
+                    <div class="priceTable-footer">
+                        <a class="main_btn" href="/bookService/{{data.slug}}">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!--================ PriceTable section End =================-->
+
+
+<!--================Testimonial section Start =================-->
+<section class="bg-gray area-padding bg-1">
+    <div class="container">
+        <div class="area-heading">
+            <h3>happy <span> clients</span> says</h3>
+            <p>She'd earth that midst void creeping him above seas</p>
+        </div>
+
+        <div class="owl-carousel owl-theme testimonial">
+            {% for item in reviewPart %}
+            <div class="testimonial__item">
+                <div class="row">
+                    <div class="col-md-4 offset-0 col-lg-4 offset-lg-l align-self-center">
+                        {% set fname = url_for('static', filename='UploadedImages/') %}
+                        <div class="testimonial__img">
+                            <img class="" src="{{ fname+item[0] }}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-lg-8">
+                        <div class="testimonial__content">
+                            <h3>{{ item[1] }} </h3><span>/</span>
+                            <h6>{{ item[2] }}</h6>
+                            <div class="testimonial_para_wrapper">
+                                <p class="testimonial__i">{{ item[3] }}</p>
+                            </div>
+                            <span class="testimonial__icon"><i class="ti-quote-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!--================Testimonial section End =================-->
+
+
+<!--================ Start Blog Area =================-->
+<!-- <section class="blog-area area-padding">
+    <div class="container">
+        <div class="area-heading">
+            <h3 class="line">Our Recent News</h3>
+            <p>Together female let signs for for fish fowl may first.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="single-blog">
+                    <div class="thumb">
+                        <img class="img-fluid" src="img/blog/1.jpg" alt="">
+                    </div>
+                    <div class="short_details">
+                        <div class="meta-top d-flex">
+
+                            <a href="#"><i class="ti-folder"></i> company</a>
+                            <a href="#"><i class="ti-time"></i> Feb 14, 2019</a>
+                        </div>
+                        <a class="d-block" href="single-blog.html">
+                            <h4>Dry were bring you're created </h4>
+                        </a>
+                        <p>Great upon after said. Set may place dry said gathered to deserve on the place.</p>
+                        <a class="read-more" href="#">read more<i class="ti-angle-double-right"></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!--================ End Blog Area =================-->
+
+
+{% endblock %}

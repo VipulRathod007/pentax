@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<!--================Hero Banner Area Start =================-->
+<section class="hero-banner">
+    <div class="container">
+        <h2>Our Service</h2>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Our Service</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+<!--================Hero Banner Area End =================-->
+
+<!--================Service  Area =================-->
+<section class="service-area area-padding">
+    <div class="container">
+        <div class="area-heading">
+            <h3>what <span> we</span> offer</h3>
+            <p>She'd earth that midst void creeping him above seas.</p>
+        </div>
+        <div class="row">
+
+            {% for data in servicesObj %}
+            <!-- Single service -->
+            <div class="col-md-6 col-xl-3">
+                <a href="/service-desc/{{data.slug}}">
+                    <div class="single-service">
+                        <div class="service-icon">
+                            <span class="{{data.serviceIcon}}"></span>
+                        </div>
+                        <div class="service-content grey" style="color: #797979;">
+                            <h5>{{data.serviceTitle}}</h5>
+                            <p>{{data.serviceDesc}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!--================Service Area end =================-->
+
+
+<!--================Testimonial section Start =================-->
+<section class="bg-gray area-padding bg-1">
+    <div class="container">
+        <div class="area-heading">
+            <h3>happy <span> clients</span> says</h3>
+            <p>She'd earth that midst void creeping him above seas</p>
+        </div>
+
+        <div class="owl-carousel owl-theme testimonial">
+            {% for item in reviewPart %}
+            <div class="testimonial__item">
+                <div class="row">
+                    <div class="col-md-4 offset-0 col-lg-4 offset-lg-l align-self-center">
+                        {% set fname = url_for('static', filename='UploadedImages/') %}
+                        <div class="testimonial__img">
+                            <img class="" src="{{ fname+item[0] }}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-lg-8">
+                        <div class="testimonial__content">
+                            <h3>{{ item[1] }} </h3><span>/</span>
+                            <h6>{{ item[2] }}</h6>
+                            <div class="testimonial_para_wrapper">
+                                <p class="testimonial__i">{{ item[3] }}</p>
+                            </div>
+                            <span class="testimonial__icon"><i class="ti-quote-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!--================Testimonial section End =================-->
+
+{% endblock %}

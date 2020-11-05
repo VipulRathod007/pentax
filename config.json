@@ -1,0 +1,35 @@
+{
+  "social": {
+    "ig": "https://google.com",
+    "fb": "https://google.com",
+    "tw": "https://google.com",
+    "yt": "https://google.com",
+    "mailAddr": "",
+    "mailPass": ""
+  },
+  "contact-info":
+  {
+    "address": "Bhavnagar, Gujarat",
+    "sub-addr": "Iskon 11 Club",
+    "contact-no": "+01 23456789",
+    "timeline": "Mon to Fri | Office Hours",
+    "mail": "contact.pentax@gmail.com"
+  },
+  "webData":
+  {
+    "title": "Pentax Photography",
+    "projectUpload": "D:\\xampp\\htdocs\\Pentax\\static\\UploadedImages"
+  },
+  "database":
+  {
+    "isLocal": "True",
+    "localURI": "mysql+pymysql://root:@localhost/pentax",
+    "prodURI": "",
+    "id": "198760345"
+  },
+  "superUser":
+  {
+    "email": "admin@pentax.gmail.com",
+    "password": ""
+  }
+}
